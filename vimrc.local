@@ -1,0 +1,26 @@
+" This file will be loaded at the end of .vimrc.
+" This file is designed to add your own vim scripts or override the exVim's .vimrc settings.
+"space instead of tab
+
+"show tab and space
+set list
+set listchars=tab:>-,trail:-
+
+"change tab to be space
+if has("autocmd")
+    autocmd! BufWrite,BufRead *.c,*.cpp,*.java,*.h,*.sh,.vimrc if ! &bin | silent! :%retab! | endif
+endif
+
+"auto remove the space at the end of line
+if has("autocmd")
+    autocmd! BufWrite,BufRead *.c,*.cpp,*.java,*.h,*.sh,.vimrc if ! &bin | silent! :%s/\s\+$// | endif
+endif
+
+"auto remove remove 
+if has("autocmd")
+    autocmd! BufWrite,BufRead * if ! &bin | silent! %s/\r//g | endif
+endif
+
+" absolute line numbers in insert mode, relative otherwise for easy movement
+au InsertEnter * :set nu
+au InsertLeave * :set rnu
