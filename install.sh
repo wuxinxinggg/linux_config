@@ -46,3 +46,11 @@ else
     ln -s $HOME/.vim/tmuxrc/tmux.conf $HOME/.tmux.conf
 fi
 
+if [ -f $HOME/.bashrc ];then
+    echo ".bashrc exist, rename to .bashrc.bak"
+    mv $HOME/.bashrc $HOME/.bashrc.bak
+    ln -s $HOME/.vim/bashrc $HOME/.bashrc
+else
+    echo "install .bashrc"
+    ln -s $HOME/.vim/bashrc $HOME/.bashrc
+fi
